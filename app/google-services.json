@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "348969542673",
+    "project_id": "vettalkmobileapp",
+    "storage_bucket": "vettalkmobileapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:348969542673:android:f86721d0d5de134d53bdb0",
+        "android_client_info": {
+          "package_name": "com.example.vettalkmobileapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "348969542673-aamlfl6g1udr6d08s5dsk6p54lrq310u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDsxYwFs4Jp1-o1sYE4X2E7yxwWWewfutc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "348969542673-aamlfl6g1udr6d08s5dsk6p54lrq310u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

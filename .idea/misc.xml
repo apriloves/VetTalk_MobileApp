@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/april/AndroidStudioProjects/VetTalkMobileApp/app/src/main/res/drawable/appointmentbtn.xml" value="0.313" />
+        <entry key="..\:/Users/april/AndroidStudioProjects/VetTalkMobileApp/app/src/main/res/drawable/buttons.xml" value="0.1205" />
+        <entry key="..\:/Users/april/AndroidStudioProjects/VetTalkMobileApp/app/src/main/res/drawable/dashboard.xml" value="0.1115" />
+        <entry key="..\:/Users/april/AndroidStudioProjects/VetTalkMobileApp/app/src/main/res/drawable/dropdownbtn.xml" value="0.313" />
+        <entry key="..\:/Users/april/AndroidStudioProjects/VetTalkMobileApp/app/src/main/res/drawable/ic_baseline_insert_drive_file_24.xml" value="0.1" />
+        <entry key="..\:/Users/april/AndroidStudioProjects/VetTalkMobileApp/app/src/main/res/drawable/menu.xml" value="0.3675" />
+        <entry key="..\:/Users/april/AndroidStudioProjects/VetTalkMobileApp/app/src/main/res/layout/activity_main.xml" value="0.23717948717948717" />
+        <entry key="..\:/Users/april/AndroidStudioProjects/VetTalkMobileApp/app/src/main/res/layout/editpage.xml" value="0.365625" />
+        <entry key="..\:/Users/april/AndroidStudioProjects/VetTalkMobileApp/app/src/main/res/layout/layout.xml" value="0.35260416666666666" />
+        <entry key="..\:/Users/april/AndroidStudioProjects/VetTalkMobileApp/app/src/main/res/layout/medicalrecords.xml" value="0.33" />
+        <entry key="..\:/Users/april/AndroidStudioProjects/VetTalkMobileApp/app/src/main/res/layout/menupage.xml" value="0.25" />
+        <entry key="..\:/Users/april/AndroidStudioProjects/VetTalkMobileApp/app/src/main/res/layout/messages.xml" value="0.3009833262077811" />
+        <entry key="..\:/Users/april/AndroidStudioProjects/VetTalkMobileApp/app/src/main/res/layout/notifications.xml" value="0.365625" />
+        <entry key="..\:/Users/april/AndroidStudioProjects/VetTalkMobileApp/app/src/main/res/layout/petprofile.xml" value="0.25" />
+        <entry key="..\:/Users/april/AndroidStudioProjects/VetTalkMobileApp/app/src/main/res/layout/setappointmentoption.xml" value="0.33" />
+        <entry key="..\:/Users/april/AndroidStudioProjects/VetTalkMobileApp/app/src/main/res/layout/setappointments.xml" value="0.33" />
+        <entry key="..\:/Users/april/AndroidStudioProjects/VetTalkMobileApp/app/src/main/res/layout/success.xml" value="0.31068840579710144" />
+        <entry key="..\:/Users/april/AndroidStudioProjects/VetTalkMobileApp/app/src/main/res/layout/transactionhistory.xml" value="0.33" />
+        <entry key="..\:/Users/april/AndroidStudioProjects/VetTalkMobileApp/app/src/main/res/xml/network_security_config.xml" value="0.17300724637681159" />
+        <entry key="..\:/Users/april/AppData/Local/Android/Sdk/platforms/android-32/data/res/layout/simple_spinner_dropdown_item.xml" value="0.1734375" />
+        <entry key="..\:/Users/april/AppData/Local/Android/Sdk/platforms/android-32/data/res/layout/simple_spinner_item.xml" value="0.1734375" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
