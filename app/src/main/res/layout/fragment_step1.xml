@@ -1,45 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:padding="8dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <LinearLayout
-        android:id="@+id/btnlayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="120dp">
+   <com.jaredrummler.materialspinner.MaterialSpinner
+       android:id="@+id/clinicspinner"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"/>
 
-        <ImageView
-            android:id="@+id/vetclinic"
-            android:layout_width="140dp"
-            android:layout_height="140dp"
-            app:srcCompat="@drawable/vetclinic">
+    <androidx.recyclerview.widget.RecyclerView
+       android:id="@+id/recycler_clinic"
+       android:layout_marginTop="4dp"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"/>
 
-        </ImageView>
-
-        <ImageView
-            android:id="@+id/labclinic"
-            android:layout_width="140dp"
-            android:layout_height="140dp"
-            android:layout_marginStart="30dp"
-            app:srcCompat="@drawable/labclinic">
-
-        </ImageView>
-
-    </LinearLayout>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="6dp"
-        android:text="Select Clinic"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:layout_below="@id/btnlayout">
-    </TextView>
-
-</RelativeLayout>
+</LinearLayout>
