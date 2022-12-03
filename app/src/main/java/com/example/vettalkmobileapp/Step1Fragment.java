@@ -7,10 +7,10 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.os.RecoverySystem;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 
 import com.jaredrummler.materialspinner.MaterialSpinner;
 
@@ -33,8 +33,11 @@ public class Step1Fragment extends Fragment implements IAllClinicLoadListener {
     RecyclerView recycler_clinic;
 
     Unbinder unbinder;
+    IClinicLoadListener iClinicLoadListener;
 
     static Step1Fragment instance;
+
+
 
     public static Step1Fragment getInstance() {
         if(instance == null)
