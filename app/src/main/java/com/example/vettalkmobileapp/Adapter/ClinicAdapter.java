@@ -1,4 +1,4 @@
-package com.example.vettalkmobileapp;
+package com.example.vettalkmobileapp.Adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -9,6 +9,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.vettalkmobileapp.Model.Clinic;
+import com.example.vettalkmobileapp.R;
 
 import java.text.CollationElementIterator;
 import java.util.List;

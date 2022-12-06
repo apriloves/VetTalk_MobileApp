@@ -15,6 +15,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
+import com.example.vettalkmobileapp.Adapter.ViewPageAdapter;
 import com.shuhart.stepview.StepView;
 
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package com.example.vettalkmobileapp;
+package com.example.vettalkmobileapp.Model;
 
 public class Clinic {
     private String name, address;

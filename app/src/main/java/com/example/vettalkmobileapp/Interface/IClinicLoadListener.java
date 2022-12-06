@@ -1,4 +1,6 @@
-package com.example.vettalkmobileapp;
+package com.example.vettalkmobileapp.Interface;
+
+import com.example.vettalkmobileapp.Model.Clinic;
 
 import java.util.List;
 

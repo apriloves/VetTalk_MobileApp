@@ -1,4 +1,4 @@
-package com.example.vettalkmobileapp;
+package com.example.vettalkmobileapp.Fragment;
 
 import android.os.Bundle;
 
@@ -10,13 +10,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class Step3Fragment extends Fragment {
+import com.example.vettalkmobileapp.R;
 
-    static Step3Fragment instance;
 
-    public static Step3Fragment getInstance() {
+public class Step2Fragment extends Fragment {
+
+    static Step2Fragment instance;
+
+    public static Step2Fragment getInstance() {
         if(instance == null)
-            instance = new Step3Fragment();
+            instance = new Step2Fragment();
         return instance;
     }
 
@@ -30,6 +33,6 @@ public class Step3Fragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
 
-        return inflater.inflate(R.layout.fragment_step3,container,false);
+        return inflater.inflate(R.layout.fragment_step2,container,false);
     }
 }
