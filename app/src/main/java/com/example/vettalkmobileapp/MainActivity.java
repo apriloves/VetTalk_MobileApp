@@ -31,9 +31,14 @@ import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 
 public class MainActivity extends AppCompatActivity {
+
+    ExecutorService executor = Executors.newSingleThreadExecutor();
+    Handler handler = new Handler(Looper.getMainLooper());
 
 
     TextInputEditText textInputEditTextUsername, textInputEditTextPassword;
@@ -72,7 +77,8 @@ public class MainActivity extends AppCompatActivity {
                             String[] data = new String[2];
                             data[0] = username;
                             data[1] = password;
-                            PutData putData = new PutData("http://192.168.1.10/mobileapp/login.php", "POST", field, data);
+                            //http://(ipconfig sa cmd)/(folder ng php file n nasa htdocs)/(php file)
+                            PutData putData = new PutData("http://192.168.1.9/mobileapp/login.php", "POST", field, data);
                             if (putData.startPut()) {
                                 if (putData.onComplete()) {
                                     progressBar.setVisibility(View.GONE);
@@ -92,9 +98,10 @@ public class MainActivity extends AppCompatActivity {
                         }
                     });
                 }
-            else {
-                Toast.makeText(getApplicationContext(),"All fields required", Toast.LENGTH_SHORT).show();
-            }
+                else {
+                    Toast.makeText(getApplicationContext(),"All fields required", Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
     }
