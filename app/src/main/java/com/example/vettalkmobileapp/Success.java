@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
@@ -15,13 +16,31 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.squareup.okhttp.OkHttpClient;
+import com.squareup.okhttp.Request;
+import com.squareup.okhttp.RequestBody;
+import com.squareup.okhttp.Response;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+
 public class Success extends AppCompatActivity {
 
     ImageView notification;
     ImageView menu;
     ImageView pfp;
-    TextView name;
+    TextView username;
     LinearLayout dashboard;
+
+    private String strJson, apiUrl = "http://192.168.1.9/mobileapp/userdata.php";
+
+    private OkHttpClient client;
+    private Response response;
+    private RequestBody requestBody;
+    private Request request;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +51,7 @@ public class Success extends AppCompatActivity {
         menu = findViewById(R.id.imageView3);
 
         pfp = findViewById(R.id.imageView4);
-        name = findViewById(R.id.textView2);
+        username = findViewById(R.id.user_name);
         dashboard = findViewById(R.id.linearLayout);
 
         dashboard.animate().translationY(-290).setDuration(800).setStartDelay(100);
@@ -55,7 +74,52 @@ public class Success extends AppCompatActivity {
                 dialog.show();
             }
         });
-    };
+
+        client = new OkHttpClient();
+        new GetUserDataRequest().execute();
+    }
+
+    public class GetUserDataRequest extends AsyncTask<Void,Void,Void> {
+        @Override
+        protected Void doInBackground(Void... voids) {
+            request = new Request.Builder().url(apiUrl).build();
+
+            try {
+                response = client.newCall(request).execute();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void unused) {
+            super.onPostExecute(unused);
+
+            try {
+                strJson = response.body().string();
+                updateUserData(strJson);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private void updateUserData(String strJson) {
+        try {
+            JSONArray parent = new JSONArray(strJson);
+            JSONObject child = parent.getJSONObject(0);
+            //String imgUrl = child.getString("imageLink");
+            String name = child.getString("FIRST_NAME");
+            username.setText(name);
+
+            //Glide.with(this).load(imgUrl).into(pet_image);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+    }
 
     public void medicalrecords(View v) {
         Intent intent = new Intent(Success.this, MedicalRecords.class);

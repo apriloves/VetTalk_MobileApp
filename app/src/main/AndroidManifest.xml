@@ -59,6 +59,14 @@
             android:screenOrientation="locked"/>
         <activity android:name=".SetAppointmentOption"
             android:screenOrientation="locked"/>
+        <activity android:name=".Consultation"
+            android:screenOrientation="locked"/>
+        <activity android:name=".Allergies"
+            android:screenOrientation="locked"/>
+        <activity android:name=".LaboratoryRec"
+            android:screenOrientation="locked"/>
+        <activity android:name=".Vaccinations"
+            android:screenOrientation="locked"/>
     </application>
 
 </manifest>

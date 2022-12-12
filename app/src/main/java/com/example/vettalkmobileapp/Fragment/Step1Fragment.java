@@ -51,9 +51,9 @@ public class Step1Fragment extends Fragment implements IAllClinicLoadListener, I
     @BindView(R.id.recycler_clinic)
     public
     RecyclerView recycler_clinic;
-    @BindView(R.id.clinicbutton)
-    public
-    CardView clinicbutton;
+   // @BindView(R.id.clinicbutton)
+   // public
+    //CardView clinicbutton;
 
     Unbinder unbinder;
     ProgressBar progressBar;
