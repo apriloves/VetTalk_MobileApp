@@ -19,7 +19,7 @@
             android:fitsSystemWindows="true"
             app:contentScrim="@color/titlebar"
             app:layout_scrollFlags="scroll|snap|exitUntilCollapsed"
-            app:title="Pet Name"
+            app:title="Kenzo"
             app:expandedTitleTextAppearance="@style/Theme.VetTalkMobileApp"
             app:collapsedTitleTextAppearance="@style/Theme.VetTalkMobileApp"
             android:background="@drawable/bg"
@@ -51,16 +51,34 @@
         android:background="@drawable/bg_shape"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/allergies"
-            android:textColor="@color/black"
-            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
-            android:textSize="18sp"
-            android:layout_marginTop="40dp"
-            android:layout_marginLeft="40dp"
-            android:layout_marginRight="40dp" />
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/allergies"
+                android:textColor="@color/black"
+                app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+                android:textSize="18sp"
+                android:layout_marginTop="40dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="No known Allergies"
+                android:textColor="@android:color/darker_gray"
+                app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+                android:textSize="18sp"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="60dp"
+                android:layout_marginRight="40dp" />
+
+        </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
 

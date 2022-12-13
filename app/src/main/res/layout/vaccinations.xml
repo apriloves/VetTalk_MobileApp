@@ -19,7 +19,7 @@
             android:fitsSystemWindows="true"
             app:contentScrim="@color/titlebar"
             app:layout_scrollFlags="scroll|snap|exitUntilCollapsed"
-            app:title="Pet Name"
+            app:title="Kenzo"
             app:expandedTitleTextAppearance="@style/Theme.VetTalkMobileApp"
             app:collapsedTitleTextAppearance="@style/Theme.VetTalkMobileApp"
             android:background="@drawable/bg"

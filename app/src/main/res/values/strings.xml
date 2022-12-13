@@ -6,7 +6,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="consult">Consultation Record</string>
     <string name="vaccine">Immunization Dates</string>
-    <string name="allergies">Allergies</string>
+    <string name="allergies">ALLERGIES</string>
     <string name="laboratory">Laboratory Record</string>
     <string name="petprofile">Pet Profile</string>
 </resources>

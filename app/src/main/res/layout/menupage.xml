@@ -9,17 +9,18 @@
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/profile"
-        android:onClick="editprofile"
         android:layout_width="75dp"
         android:layout_height="72dp"
         android:layout_marginStart="32dp"
+        android:onClick="editprofile"
+        android:src="@drawable/ic_baseline_account_circle_24"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/usernameview"
+        app:layout_constraintHorizontal_bias="0.047"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.084"
-        android:src="@drawable/ic_baseline_account_circle_24"
-        tools:ignore="MissingConstraints"
-        />
+        app:layout_constraintVertical_bias="0.096"
+        tools:ignore="MissingConstraints" />
 
     <ImageView
         android:id="@+id/imageView6"
@@ -44,39 +45,6 @@
         app:srcCompat="@drawable/ic_baseline_pets_24"
         tools:ignore="MissingConstraints" />
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="64dp"
-        android:layout_height="28dp"
-        android:layout_marginEnd="56dp"
-        android:text="pet name"
-        android:textSize="15dp"
-        app:layout_constraintEnd_toStartOf="@+id/textView5"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5"
-        tools:ignore="MissingConstraints" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="64dp"
-        android:layout_height="28dp"
-        android:layout_marginEnd="164dp"
-        android:text="pet name"
-        android:textSize="15dp"
-        app:layout_constraintEnd_toStartOf="@+id/textView5"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5"
-        tools:ignore="MissingConstraints" />
-
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="64dp"
-        android:layout_height="28dp"
-        android:layout_marginEnd="60dp"
-        android:text="pet name"
-        android:textSize="15dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView6"
-        tools:ignore="MissingConstraints" />
-
     <ImageView
         android:id="@+id/imageView7"
         android:layout_width="64dp"
@@ -90,18 +58,17 @@
         android:onClick="petprofile"/>
 
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/usernameview"
         android:layout_width="119dp"
         android:layout_height="38dp"
-        android:layout_marginEnd="170dp"
+        android:layout_marginEnd="156dp"
         android:text="username"
         android:textColor="#e3f5ff"
         android:textSize="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.14"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.121"
+        app:layout_constraintVertical_bias="0.123"
         tools:ignore="MissingConstraints" />
 
     <View
@@ -112,7 +79,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints"></View>
+        tools:ignore="MissingConstraints"/>
 
     <RelativeLayout
         android:id="@+id/relativeLayout"

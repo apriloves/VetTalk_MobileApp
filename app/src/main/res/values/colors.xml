@@ -10,4 +10,6 @@
     <color name="stepcolor">#858eed</color>
     <color name="titlebar">#809bbf</color>
     <color name="gray">#655D5D</color>
+    <color name="lightgray">#8C8484</color>
+    <color name="lightlightgray">#CE84939C</color>
 </resources>
