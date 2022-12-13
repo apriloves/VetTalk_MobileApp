@@ -62,14 +62,13 @@
         android:layout_width="119dp"
         android:layout_height="38dp"
         android:layout_marginEnd="156dp"
-        android:text="username"
+        android:text="@string/username"
         android:textColor="#e3f5ff"
         android:textSize="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.123"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintVertical_bias="0.123"/>
 
     <View
         android:id="@+id/view"

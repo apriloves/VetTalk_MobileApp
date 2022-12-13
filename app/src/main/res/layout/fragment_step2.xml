@@ -4,13 +4,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="SCHEDULE"
-        android:layout_centerInParent="true"
-        android:textSize="30sp"
-        android:textStyle="bold"/>
+   <CalendarView
+       android:id="@+id/calendarView"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"/>
+
+   <TextView
+       android:id="@+id/selectedDay"
+       android:gravity="center"
+       android:textSize="25sp"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:padding="8dp"/>
 
 </RelativeLayout>

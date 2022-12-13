@@ -9,4 +9,5 @@
     <string name="allergies">ALLERGIES</string>
     <string name="laboratory">Laboratory Record</string>
     <string name="petprofile">Pet Profile</string>
+    <string name="username">username</string>
 </resources>

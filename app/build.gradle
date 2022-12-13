@@ -26,6 +26,10 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
+    //buildFeatures {
+   //     viewBinding true
+   // }
 }
 
 dependencies {
@@ -52,5 +56,10 @@ dependencies {
    // implementation 'com.google.android.gms:play-services-auth:20.3.0'
    // implementation 'com.google.firebase:firebase-firestore:24.4.0'
     implementation 'com.jakewharton:butterknife:10.2.3'
+
+    //implementation 'com.intuit.sdp:sdp-android: 1.0.6'
+    //implementation 'com.intuit.ssp:ssp-android: 1.0.6'
+
+    //implementation 'com.makeramen:roundedimageview:2.3.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.3'
 }
