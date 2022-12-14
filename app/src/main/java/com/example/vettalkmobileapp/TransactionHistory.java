@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class TransactionHistory extends AppCompatActivity{
