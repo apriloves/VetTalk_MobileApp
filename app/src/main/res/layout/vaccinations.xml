@@ -20,6 +20,10 @@
             app:contentScrim="@color/titlebar"
             app:layout_scrollFlags="scroll|snap|exitUntilCollapsed"
             app:title="Kenzo"
+<<<<<<< HEAD
+=======
+            app:expandedTitleTextColor="@color/white"
+>>>>>>> 6248051 (Initial Commit)
             app:expandedTitleTextAppearance="@style/Theme.VetTalkMobileApp"
             app:collapsedTitleTextAppearance="@style/Theme.VetTalkMobileApp"
             android:background="@drawable/bg"
@@ -67,10 +71,18 @@
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+<<<<<<< HEAD
         android:baselineAlignBottom="false"
         android:clickable="true"
         android:src="@drawable/ic_baseline_pets_24"
         app:fabSize="normal"
+=======
+        android:id="@+id/fab_btn"
+        app:fabSize="normal"
+        android:baselineAlignBottom="false"
+        android:clickable="true"
+        android:focusable="true"
+>>>>>>> 6248051 (Initial Commit)
         app:layout_anchor="@+id/appbar"
         app:layout_anchorGravity="end|bottom"
         android:layout_marginEnd="20dp">
