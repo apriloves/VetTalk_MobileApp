@@ -57,20 +57,34 @@ public class SetAppointmentOption extends AppCompatActivity {
     void nextClick(){
         if (Common.step < 3 || Common.step == 0){
             Common.step++;
-            if(Common.step == 4){
+            if(Common.step == 1){
 
+            }
+            else if(Common.step == 2){
+                loadScheduleByClinic(Common.currentClinic.getClinicId());
             }
             viewPager.setCurrentItem(Common.step);
         }
     }
 
     private void loadScheduleByClinic(String clinicId) {
+        Intent intent = new Intent(Common.KEY_DISPLAY_TIME_SLOT);
+        localBroadcastManager.sendBroadcast(intent);
     }
 
     private BroadcastReceiver buttonNextReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            Common.currentClinic = intent.getParcelableExtra(Common.KEY_CLINIC_STORE);
+
+            int step = intent.getIntExtra(Common.KEY_STEP,0);
+            if(step == 1){
+                Common.currentClinic = intent.getParcelableExtra(Common.KEY_CLINIC_STORE);
+            }
+            else if(step == 2){
+
+            }
+
+
             nextstep.setEnabled(true);
             setColorButton();
         }

@@ -63,6 +63,7 @@ public class ClinicAdapter extends RecyclerView.Adapter<ClinicAdapter.myViewHold
 
                 Intent intent = new Intent(Common.KEY_ENABLE_BUTTON_NEXT);
                 intent.putExtra(Common.KEY_CLINIC_STORE, clinicList.get(pos));
+                intent.putExtra(Common.KEY_STEP, 1);
                 localBroadcastManager.sendBroadcast(intent);
             }
         });

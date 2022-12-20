@@ -30,7 +30,7 @@ public class PetProfile extends AppCompatActivity {
 
     //ImageView pet_image;
     TextView pet_gender, pet_categ, pet_color, pet_breed, pet_age, pet_weight;
-    private String strJson, apiUrl = "http://192.168.1.11/mobileapp/petdata.php";
+    private String strJson, apiUrl = "http://192.168.1.6/mobileapp/petdata.php";
 
     private OkHttpClient client;
     private Response response;
@@ -61,6 +61,14 @@ public class PetProfile extends AppCompatActivity {
         progressDialog.show();
         client = new OkHttpClient();
         new GetUserDataRequest().execute();
+    }
+
+    @Override
+    public void onDestroy(){
+        super.onDestroy();
+        if ( progressDialog!=null && progressDialog.isShowing() ){
+            progressDialog.cancel();
+        }
     }
 
     public class GetUserDataRequest extends AsyncTask<Void,Void,Void> {
@@ -118,4 +126,6 @@ public class PetProfile extends AppCompatActivity {
         }
 
     }
+
+
 }

@@ -26,7 +26,7 @@ public class MenuPage extends AppCompatActivity {
     ImageView profile;
     TextView username;
 
-    private String strJson, apiUrl = "http://192.168.1.11/mobileapp/userdata.php";
+    private String strJson, apiUrl = "http://192.168.1.6/mobileapp/userdata.php";
     //apiUrl1 = "http://192.168.1.9/mobileapp/userdata.php";
 
     private OkHttpClient client;
