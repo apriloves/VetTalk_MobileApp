@@ -7,9 +7,16 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class TransactionHistory extends AppCompatActivity{
 
@@ -48,6 +55,21 @@ public class TransactionHistory extends AppCompatActivity{
         Intent intent = new Intent(TransactionHistory.this, Success.class);
         startActivity(intent);
     }
+
+    public void transact3(View v) {
+        Intent intent = new Intent(TransactionHistory.this, Receipt.class);
+        startActivity(intent);
+    };
+
+    public void transact2(View v) {
+        Intent intent = new Intent(TransactionHistory.this, Receipt.class);
+        startActivity(intent);
+    };
+
+    public void transact1(View v) {
+        Intent intent = new Intent(TransactionHistory.this, Receipt.class);
+        startActivity(intent);
+    };
 }
 
 

@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
                             data[0] = username;
                             data[1] = password;
                             //http://(ipconfig sa cmd)/(folder ng php file n nasa htdocs)/(php file)
-                            PutData putData = new PutData("http://192.168.1.9/mobileapp/login.php", "POST", field, data);
+                            PutData putData = new PutData("http://192.168.1.11/mobileapp/login.php", "POST", field, data);
                             if (putData.startPut()) {
                                 if (putData.onComplete()) {
                                     progressBar.setVisibility(View.GONE);

@@ -23,11 +23,10 @@ import java.io.IOException;
 
 public class MenuPage extends AppCompatActivity {
 
-    //ImageView edit;
-    // ImageView profile;
+    ImageView profile;
     TextView username;
 
-    private String strJson, apiUrl = "http://192.168.1.9/mobileapp/userdata.php";
+    private String strJson, apiUrl = "http://192.168.1.11/mobileapp/userdata.php";
     //apiUrl1 = "http://192.168.1.9/mobileapp/userdata.php";
 
     private OkHttpClient client;
@@ -47,23 +46,15 @@ public class MenuPage extends AppCompatActivity {
         client = new OkHttpClient();
         new GetUserDataRequest().execute();
 
-       //edit = findViewById(R.id.profile);
-       // profile = findViewById(R.id.profile);
+       profile = findViewById(R.id.profile);
 
-       //edit.setOnClickListener(new View.OnClickListener() {
-       //     @Override
-       //     public void onClick(View v) {
-       //         Intent intent = new Intent(MenuPage.this, EditPage.class);
-       //         startActivity(intent);
-       //     }
-       // });
-       // profile.setOnClickListener(new View.OnClickListener() {
-       //     @Override
-       //     public void onClick(View v) {
-       //         Intent intent = new Intent(MenuPage.this, EditPage.class);
-       //         startActivity(intent);
-       //     }
-       // });
+        profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MenuPage.this, EditPage.class);
+                startActivity(intent);
+            }
+        });
     }
 
     public class GetUserDataRequest extends AsyncTask<Void,Void,Void> {
@@ -130,10 +121,10 @@ public class MenuPage extends AppCompatActivity {
         startActivity(intent);
     };
 
-    public void editprofile(View v) {
-        Intent intent = new Intent(this, EditPage.class);
-        startActivity(intent);
-    };
+    //public void editprofile(View v) {
+    //    Intent intent = new Intent(this, EditPage.class);
+    //    startActivity(intent);
+    //};
 
     public void petprofile(View v) {
         Intent intent = new Intent(this, PetProfile.class);

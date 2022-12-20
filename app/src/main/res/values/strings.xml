@@ -6,14 +6,10 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="consult">Consultation Record</string>
     <string name="vaccine">Immunization Dates</string>
-<<<<<<< HEAD
-    <string name="allergies">ALLERGIES</string>
-    <string name="laboratory">Laboratory Record</string>
-    <string name="petprofile">Pet Profile</string>
-    <string name="username">username</string>
-=======
     <string name="allergies">Allergies</string>
     <string name="laboratory">Laboratory Record</string>
     <string name="petprofile">Pet Profile</string>
->>>>>>> 6248051 (Initial Commit)
+    <string name="username">username</string>
+    <string name="back"><![CDATA[<-]]></string>
+    <string name="forward"><![CDATA[->]]></string>
 </resources>

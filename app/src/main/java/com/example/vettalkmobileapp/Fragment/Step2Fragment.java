@@ -22,10 +22,10 @@ import butterknife.BindView;
 
 public class Step2Fragment extends Fragment {
 
-    @BindView(R.id.calendarView)
-    CalendarView calendarView;
-    @BindView(R.id.selectedDay)
-    TextView selected_day;
+    //@BindView(R.id.calendarView)
+    //CalendarView calendarView;
+    //@BindView(R.id.selectedDay)
+    //TextView selected_day;
 
     static Step2Fragment instance;
 
@@ -46,14 +46,14 @@ public class Step2Fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
 
-        calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
-            @Override
-            public void onSelectedDayChange(@NonNull CalendarView calendarView, int year, int month, int dayOfMonth) {
-                String todayDate = (month + 1) + "/" + dayOfMonth + "/" + year;
-                Log.d("date", todayDate);
-                selected_day.setText(todayDate);
-            }
-        });
+        //calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+        //    @Override
+        //    public void onSelectedDayChange(@NonNull CalendarView calendarView, int year, int month, int dayOfMonth) {
+        //        String todayDate = (month + 1) + "/" + dayOfMonth + "/" + year;
+        //        Log.d("date", todayDate);
+        //        selected_day.setText(todayDate);
+        //    }
+        //});
 
         return inflater.inflate(R.layout.fragment_step2,container,false);
     }

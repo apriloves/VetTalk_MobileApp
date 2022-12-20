@@ -1,0 +1,438 @@
+Index: app/src/main/java/com/example/vettalkmobileapp/MainActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.vettalkmobileapp;\r\n\r\nimport androidx.annotation.Nullable;\r\nimport androidx.appcompat.app.AppCompatActivity;\r\n\r\nimport android.content.Intent;\r\nimport android.os.Bundle;\r\nimport android.os.Handler;\r\nimport android.os.Looper;\r\nimport android.util.Log;\r\nimport android.view.View;\r\nimport android.widget.Button;\r\nimport android.widget.EditText;\r\nimport android.widget.ProgressBar;\r\nimport android.widget.TextView;\r\nimport android.widget.Toast;\r\n\r\nimport com.android.volley.AuthFailureError;\r\nimport com.android.volley.Request;\r\nimport com.android.volley.RequestQueue;\r\nimport com.android.volley.Response;\r\nimport com.android.volley.VolleyError;\r\nimport com.android.volley.toolbox.StringRequest;\r\nimport com.android.volley.toolbox.Volley;\r\nimport com.google.android.material.textfield.TextInputEditText;\r\nimport com.vishnusivadas.advanced_httpurlconnection.PutData;\r\n\r\nimport java.math.BigInteger;\r\nimport java.security.MessageDigest;\r\nimport java.security.NoSuchAlgorithmException;\r\nimport java.security.SecureRandom;\r\nimport java.util.HashMap;\r\nimport java.util.Map;\r\nimport java.util.concurrent.ExecutorService;\r\nimport java.util.concurrent.Executors;\r\n\r\n\r\npublic class MainActivity extends AppCompatActivity {\r\n\r\n    ExecutorService executor = Executors.newSingleThreadExecutor();\r\n    Handler handler = new Handler(Looper.getMainLooper());\r\n\r\n\r\n    TextInputEditText textInputEditTextUsername, textInputEditTextPassword;\r\n    Button buttonLogin;\r\n    ProgressBar progressBar;\r\n    @Override\r\n    protected void onCreate(Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n        setContentView(R.layout.activity_main);\r\n\r\n        textInputEditTextUsername = findViewById(R.id.username);\r\n        textInputEditTextPassword = findViewById(R.id.password);\r\n        buttonLogin = findViewById(R.id.loginbtn);\r\n        progressBar = findViewById(R.id.progressBar);\r\n\r\n        buttonLogin.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View v) {\r\n                final String username, password;\r\n                username = String.valueOf(textInputEditTextUsername.getText());\r\n                password = String.valueOf(textInputEditTextPassword.getText());\r\n                //Encryptor encryptor = new Encryptor();\r\n\r\n                if(!username.equals(\"\") && !password.equals(\"\")) {\r\n                    progressBar.setVisibility(View.VISIBLE);\r\n                    Handler handler = new Handler();\r\n                    handler.post(new Runnable() {\r\n                        @Override\r\n                        public void run() {\r\n                            //Starting Write and Read data with URL\r\n                            //Creating array for parameters\r\n                            String[] field = new String[2];\r\n                            field[0] = \"username\";\r\n                            field[1] = \"password\";\r\n                            //Creating array for data\r\n                            String[] data = new String[2];\r\n                            data[0] = username;\r\n                            data[1] = password;\r\n                            //http://(ipconfig sa cmd)/(folder ng php file n nasa htdocs)/(php file)\r\n                            PutData putData = new PutData(\"http://192.168.1.9/mobileapp/login.php\", \"POST\", field, data);\r\n                            if (putData.startPut()) {\r\n                                if (putData.onComplete()) {\r\n                                    progressBar.setVisibility(View.GONE);\r\n                                    String result = putData.getResult();\r\n                                    //End ProgressBar (Set visibility to GONE)\r\n                                    if(result.equals(\"Login Success\")){\r\n                                        Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();\r\n                                        Intent intent = new Intent(getApplicationContext(), Success.class);\r\n                                        startActivity(intent);\r\n                                        finish();\r\n                                    }\r\n                                    else {\r\n                                        Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();\r\n                                    }\r\n                                }\r\n                            }\r\n                        }\r\n                    });\r\n                }\r\n                else {\r\n                    Toast.makeText(getApplicationContext(),\"All fields required\", Toast.LENGTH_SHORT).show();\r\n                }\r\n\r\n            }\r\n        });\r\n    }\r\n\r\n    public void login(View v) {\r\n        Intent intent = new Intent(MainActivity.this, Success.class);\r\n        startActivity(intent);\r\n\r\n    }\r\n\r\n}\r\n\r\n// Hello!\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/vettalkmobileapp/MainActivity.java b/app/src/main/java/com/example/vettalkmobileapp/MainActivity.java
+--- a/app/src/main/java/com/example/vettalkmobileapp/MainActivity.java	(revision 60a41989964dc748489341699becb1d50052482d)
++++ b/app/src/main/java/com/example/vettalkmobileapp/MainActivity.java	(date 1671100650089)
+@@ -78,7 +78,7 @@
+                             data[0] = username;
+                             data[1] = password;
+                             //http://(ipconfig sa cmd)/(folder ng php file n nasa htdocs)/(php file)
+-                            PutData putData = new PutData("http://192.168.1.9/mobileapp/login.php", "POST", field, data);
++                            PutData putData = new PutData("http://192.168.1.11/mobileapp/login.php", "POST", field, data);
+                             if (putData.startPut()) {
+                                 if (putData.onComplete()) {
+                                     progressBar.setVisibility(View.GONE);
+Index: app/src/main/res/layout/setappointmentoption.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<RelativeLayout\r\n    xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    android:background=\"#809bbf\">\r\n\r\n    <ImageView\r\n        android:layout_width=\"48dp\"\r\n        android:layout_height=\"54dp\"\r\n        android:layout_above=\"@+id/linearLayout2\"\r\n        android:layout_alignParentStart=\"true\"\r\n        android:layout_alignParentTop=\"true\"\r\n        android:layout_marginStart=\"12dp\"\r\n        android:layout_marginTop=\"13dp\"\r\n        android:layout_marginEnd=\"9dp\"\r\n        android:layout_marginBottom=\"23dp\"\r\n        android:layout_toStartOf=\"@+id/textView\"\r\n        android:onClick=\"menuboard\"\r\n        android:src=\"@drawable/ic_baseline_keyboard_arrow_left_24\"\r\n        app:layout_constraintEnd_toStartOf=\"@+id/textView\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        tools:ignore=\"MissingConstraints,TouchTargetSizeCheck,SpeakableTextPresentCheck\"\r\n        tools:layout_editor_absoluteY=\"16dp\" />\r\n\r\n    <TextView\r\n        android:id=\"@+id/textView\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"50dp\"\r\n        android:layout_above=\"@+id/linearLayout2\"\r\n        android:layout_alignParentTop=\"true\"\r\n        android:layout_marginStart=\"20dp\"\r\n        android:layout_marginTop=\"22dp\"\r\n        android:layout_marginEnd=\"26dp\"\r\n        android:layout_marginBottom=\"29dp\"\r\n        android:layout_toStartOf=\"@+id/imageView2\"\r\n        android:text=\"@string/set_an_appointment\"\r\n        android:textColor=\"#e3f5ff\"\r\n        android:textSize=\"25sp\"\r\n        android:textStyle=\"bold\"\r\n        app:layout_constraintBottom_toTopOf=\"@+id/linearLayout2\"\r\n        app:layout_constraintEnd_toStartOf=\"@+id/imageView2\"\r\n        app:layout_constraintHorizontal_bias=\"0.41\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintVertical_bias=\"1.0\" />\r\n\r\n    <ImageView\r\n        android:id=\"@+id/imageView3\"\r\n        android:layout_width=\"34dp\"\r\n        android:layout_height=\"38dp\"\r\n        android:layout_above=\"@+id/linearLayout2\"\r\n        android:layout_alignParentTop=\"true\"\r\n        android:layout_alignParentEnd=\"true\"\r\n        android:layout_marginTop=\"17dp\"\r\n        android:layout_marginEnd=\"15dp\"\r\n        android:layout_marginBottom=\"31dp\"\r\n        android:src=\"@drawable/ic_baseline_menu_24\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        tools:ignore=\"MissingConstraints\"\r\n        tools:layout_editor_absoluteY=\"23dp\" />\r\n\r\n    <ImageView\r\n        android:id=\"@+id/imageView2\"\r\n        android:layout_width=\"36dp\"\r\n        android:layout_height=\"39dp\"\r\n        android:layout_above=\"@+id/linearLayout2\"\r\n        android:layout_alignParentTop=\"true\"\r\n        android:layout_marginTop=\"17dp\"\r\n        android:layout_marginEnd=\"12dp\"\r\n        android:layout_marginBottom=\"29dp\"\r\n        android:layout_toStartOf=\"@+id/imageView3\"\r\n        android:src=\"@drawable/ic_baseline_notifications_none_24\"\r\n        app:layout_constraintEnd_toStartOf=\"@+id/imageView3\"\r\n        tools:ignore=\"MissingConstraints\"\r\n        tools:layout_editor_absoluteY=\"22dp\"/>\r\n\r\n    <RelativeLayout\r\n        android:id=\"@+id/linearLayout2\"\r\n        android:layout_width=\"412dp\"\r\n        android:layout_height=\"645dp\"\r\n        android:layout_alignParentBottom=\"true\"\r\n        android:layout_marginBottom=\"-4dp\"\r\n        android:background=\"#e3f5ff\"\r\n        android:orientation=\"vertical\">\r\n\r\n        <com.shuhart.stepview.StepView\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:id=\"@+id/stepview\"\r\n            app:sv_animationType=\"None\"\r\n            app:sv_stepPadding=\"20dp\"\r\n            android:padding=\"20dp\"\r\n            app:sv_selectedCircleColor=\"@color/stepcolor\"\r\n            app:sv_selectedStepNumberColor=\"@color/white\"\r\n            app:sv_selectedTextColor=\"@color/stepcolor\"\r\n            app:sv_doneCircleColor=\"#809bbf\"\r\n            app:sv_doneStepLineColor=\"#809bbf\"\r\n            app:sv_doneTextColor=\"@color/white\"\r\n            app:sv_doneStepMarkColor=\"@color/white\"/>\r\n\r\n        <androidx.viewpager.widget.ViewPager\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"match_parent\"\r\n            android:id=\"@+id/viewpager\"\r\n            android:layout_below=\"@id/stepview\" />\r\n\r\n        <LinearLayout\r\n            android:layout_width=\"370dp\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:layout_alignParentStart=\"true\"\r\n            android:layout_alignParentEnd=\"true\"\r\n            android:layout_alignParentBottom=\"true\"\r\n            android:layout_marginStart=\"21dp\"\r\n            android:layout_marginEnd=\"20dp\"\r\n            android:layout_marginBottom=\"59dp\"\r\n            android:orientation=\"vertical\"\r\n            android:padding=\"5dp\"\r\n            tools:ignore=\"MissingConstraints\"\r\n            tools:layout_editor_absoluteX=\"23dp\"\r\n            tools:layout_editor_absoluteY=\"160dp\">\r\n\r\n            <TextView\r\n                android:id=\"@+id/stepback\"\r\n                android:textColor=\"@color/white\"\r\n                android:layout_width=\"150dp\"\r\n                android:padding=\"8dp\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:layout_marginTop=\"180dp\"\r\n                android:text=\"Previous\"\r\n                android:textSize=\"20sp\"\r\n                android:textAlignment=\"center\"\r\n                android:textStyle=\"bold\"/>\r\n\r\n            <TextView\r\n                android:id=\"@+id/nextstep\"\r\n                android:textColor=\"@color/white\"\r\n                android:layout_width=\"150dp\"\r\n                android:padding=\"8dp\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:layout_marginStart=\"200dp\"\r\n                android:textAlignment=\"center\"\r\n                android:layout_marginTop=\"-43dp\"\r\n                android:text=\"Next\"\r\n                android:textSize=\"20sp\"\r\n                android:textStyle=\"bold\"/>\r\n\r\n        </LinearLayout>\r\n\r\n\r\n    </RelativeLayout>\r\n\r\n</RelativeLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/setappointmentoption.xml b/app/src/main/res/layout/setappointmentoption.xml
+--- a/app/src/main/res/layout/setappointmentoption.xml	(revision 60a41989964dc748489341699becb1d50052482d)
++++ b/app/src/main/res/layout/setappointmentoption.xml	(date 1671106412115)
+@@ -132,7 +132,8 @@
+                 android:text="Previous"
+                 android:textSize="20sp"
+                 android:textAlignment="center"
+-                android:textStyle="bold"/>
++                android:textStyle="bold"
++                android:enabled="false"/>
+ 
+             <TextView
+                 android:id="@+id/nextstep"
+@@ -145,7 +146,8 @@
+                 android:layout_marginTop="-43dp"
+                 android:text="Next"
+                 android:textSize="20sp"
+-                android:textStyle="bold"/>
++                android:textStyle="bold"
++                android:enabled="false"/>
+ 
+         </LinearLayout>
+ 
+Index: app/src/main/java/com/example/vettalkmobileapp/Common.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.vettalkmobileapp;\r\n\r\nimport android.content.Context;\r\n\r\nimport java.io.File;\r\n\r\npublic class Common {\r\n    public static String getAppPath(Context context)\r\n    {\r\n        File dir = new File(android.os.Environment.getExternalStorageDirectory()\r\n                + File.separator\r\n                + context.getResources().getString(R.string.app_name)\r\n                + File.separator\r\n        );\r\n\r\n        if(!dir.exists())\r\n            dir.mkdir();\r\n        return dir.getPath() + File.separator;\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/vettalkmobileapp/Common.java b/app/src/main/java/com/example/vettalkmobileapp/Common.java
+--- a/app/src/main/java/com/example/vettalkmobileapp/Common.java	(revision 60a41989964dc748489341699becb1d50052482d)
++++ b/app/src/main/java/com/example/vettalkmobileapp/Common.java	(date 1671271771615)
+@@ -2,9 +2,15 @@
+ 
+ import android.content.Context;
+ 
++import com.example.vettalkmobileapp.Model.Clinic;
++
+ import java.io.File;
+ 
+ public class Common {
++    public static final String KEY_ENABLE_BUTTON_NEXT = "ENABLE_BUTTON_NEXT";
++    public static final String KEY_CLINIC_STORE = "CLINIC_SAVE";
++    public static Clinic currentClinic;
++
+     public static String getAppPath(Context context)
+     {
+         File dir = new File(android.os.Environment.getExternalStorageDirectory()
+Index: app/src/main/java/com/example/vettalkmobileapp/Adapter/ClinicAdapter.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.vettalkmobileapp.Adapter;\r\n\r\nimport android.annotation.SuppressLint;\r\nimport android.content.Context;\r\nimport android.view.LayoutInflater;\r\nimport android.view.View;\r\nimport android.view.ViewGroup;\r\nimport android.widget.TextView;\r\n\r\nimport androidx.annotation.NonNull;\r\nimport androidx.cardview.widget.CardView;\r\nimport androidx.recyclerview.widget.RecyclerView;\r\n\r\nimport com.example.vettalkmobileapp.Interface.IRecyclerItemSelectedListener;\r\nimport com.example.vettalkmobileapp.Model.Clinic;\r\nimport com.example.vettalkmobileapp.R;\r\n\r\nimport java.text.CollationElementIterator;\r\nimport java.util.ArrayList;\r\nimport java.util.List;\r\n\r\npublic class ClinicAdapter extends RecyclerView.Adapter<ClinicAdapter.myViewHolder> {\r\n\r\n\r\n    Context context;\r\n    List<Clinic> clinicList;\r\n    List<CardView> cardViewList;\r\n\r\n    public ClinicAdapter(Context context, List<Clinic> clinicList) {\r\n        this.context = context;\r\n        this.clinicList = clinicList;\r\n        cardViewList = new ArrayList<>();\r\n    }\r\n\r\n    @NonNull\r\n    @Override\r\n    public myViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {\r\n        View itemView = LayoutInflater.from(context)\r\n                .inflate(R.layout.layout_clinic, parent, false);\r\n        return new myViewHolder(itemView);\r\n    }\r\n\r\n    @Override\r\n    public void onBindViewHolder(@NonNull myViewHolder holder, int position) {\r\n        myViewHolder.clinic_name.setText(clinicList.get(position).getName());\r\n        myViewHolder.clinic_address.setText(clinicList.get(position).getAddress());\r\n        if(!cardViewList.contains(myViewHolder.clinicbutton))\r\n            cardViewList.add(myViewHolder.clinicbutton);\r\n\r\n        myViewHolder.setiRecyclerItemSelectedListener(new IRecyclerItemSelectedListener() {\r\n            @Override\r\n            public void onItemSelectedListener(View view, int pos) {\r\n                for (CardView cardView:cardViewList)\r\n                    cardView.setCardBackgroundColor(context.getResources().getColor(android.R.color.white));\r\n            }\r\n        });\r\n    }\r\n\r\n    @Override\r\n    public int getItemCount() {\r\n        return clinicList.size();\r\n    }\r\n\r\n    public static class myViewHolder extends  RecyclerView.ViewHolder implements View.OnClickListener {\r\n        static TextView clinic_name, clinic_address;\r\n        static CardView clinicbutton;\r\n        private static myViewHolder setiRecyclerItemSelectedListener;\r\n\r\n        IRecyclerItemSelectedListener iRecyclerItemSelectedListener;\r\n\r\n        public static void setiRecyclerItemSelectedListener(IRecyclerItemSelectedListener iRecyclerItemSelectedListener) {\r\n            myViewHolder.setiRecyclerItemSelectedListener.iRecyclerItemSelectedListener = iRecyclerItemSelectedListener;\r\n        }\r\n\r\n        public myViewHolder(@NonNull View itemView) {\r\n            super(itemView);\r\n\r\n            clinicbutton = (CardView)itemView.findViewById(R.id.clinicbutton);\r\n            clinic_address = (TextView)itemView.findViewById(R.id.clinic_address);\r\n            clinic_name = (TextView)itemView.findViewById(R.id.clinic_name);\r\n\r\n            itemView.setOnClickListener(this);\r\n        }\r\n\r\n        @Override\r\n        public void onClick(View v) {\r\n\r\n        }\r\n    }\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/vettalkmobileapp/Adapter/ClinicAdapter.java b/app/src/main/java/com/example/vettalkmobileapp/Adapter/ClinicAdapter.java
+--- a/app/src/main/java/com/example/vettalkmobileapp/Adapter/ClinicAdapter.java	(revision 60a41989964dc748489341699becb1d50052482d)
++++ b/app/src/main/java/com/example/vettalkmobileapp/Adapter/ClinicAdapter.java	(date 1671107644794)
+@@ -2,6 +2,7 @@
+ 
+ import android.annotation.SuppressLint;
+ import android.content.Context;
++import android.content.Intent;
+ import android.view.LayoutInflater;
+ import android.view.View;
+ import android.view.ViewGroup;
+@@ -9,8 +10,10 @@
+ 
+ import androidx.annotation.NonNull;
+ import androidx.cardview.widget.CardView;
++import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+ import androidx.recyclerview.widget.RecyclerView;
+ 
++import com.example.vettalkmobileapp.Common;
+ import com.example.vettalkmobileapp.Interface.IRecyclerItemSelectedListener;
+ import com.example.vettalkmobileapp.Model.Clinic;
+ import com.example.vettalkmobileapp.R;
+@@ -25,11 +28,13 @@
+     Context context;
+     List<Clinic> clinicList;
+     List<CardView> cardViewList;
++    LocalBroadcastManager localBroadcastManager;
+ 
+     public ClinicAdapter(Context context, List<Clinic> clinicList) {
+         this.context = context;
+         this.clinicList = clinicList;
+         cardViewList = new ArrayList<>();
++        localBroadcastManager = LocalBroadcastManager.getInstance(context);
+     }
+ 
+     @NonNull
+@@ -52,6 +57,12 @@
+             public void onItemSelectedListener(View view, int pos) {
+                 for (CardView cardView:cardViewList)
+                     cardView.setCardBackgroundColor(context.getResources().getColor(android.R.color.white));
++
++                myViewHolder.clinicbutton.setCardBackgroundColor(context.getResources().getColor(android.R.color.darker_gray));
++
++                Intent intent = new Intent(Common.KEY_ENABLE_BUTTON_NEXT);
++                intent.putExtra(Common.KEY_CLINIC_STORE, clinicList.get(pos));
++                localBroadcastManager.sendBroadcast(intent);
+             }
+         });
+     }
+@@ -84,7 +95,7 @@
+ 
+         @Override
+         public void onClick(View v) {
+-
++            iRecyclerItemSelectedListener.onItemSelectedListener(v, getAdapterPosition());
+         }
+     }
+ 
+Index: app/src/main/java/com/example/vettalkmobileapp/SetAppointmentOption.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.vettalkmobileapp;\r\n\r\nimport android.app.Dialog;\r\nimport android.content.Intent;\r\nimport android.graphics.Color;\r\nimport android.graphics.drawable.ColorDrawable;\r\nimport android.os.Bundle;\r\nimport android.view.View;\r\nimport android.view.Window;\r\nimport android.widget.Button;\r\nimport android.widget.ImageView;\r\nimport android.widget.LinearLayout;\r\nimport android.widget.TextView;\r\n\r\nimport androidx.appcompat.app.AppCompatActivity;\r\nimport androidx.viewpager.widget.ViewPager;\r\n\r\nimport com.example.vettalkmobileapp.Adapter.ViewPageAdapter;\r\nimport com.shuhart.stepview.StepView;\r\n\r\nimport java.util.ArrayList;\r\nimport java.util.List;\r\n\r\nimport butterknife.ButterKnife;\r\n\r\npublic class SetAppointmentOption extends AppCompatActivity {\r\n\r\n    ImageView notification;\r\n    ImageView menu;\r\n    StepView stepView;\r\n    ViewPager viewPager;\r\n    TextView nextstep;\r\n    TextView stepback;\r\n\r\n    @Override\r\n    protected void onCreate(Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n        setContentView(R.layout.setappointmentoption);\r\n\r\n        notification = findViewById(R.id.imageView2);\r\n        stepback = findViewById(R.id.stepback);\r\n        nextstep = findViewById(R.id.nextstep);\r\n        stepView = findViewById(R.id.stepview);\r\n        viewPager = findViewById(R.id.viewpager);\r\n\r\n        ButterKnife.bind(SetAppointmentOption.this);\r\n        setupStepView();\r\n        setColorButton();\r\n\r\n        viewPager.setAdapter(new ViewPageAdapter(getSupportFragmentManager()));\r\n        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {\r\n            @Override\r\n            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {\r\n\r\n            }\r\n\r\n            @Override\r\n            public void onPageSelected(int position) {\r\n                if(position == 0)\r\n                    stepback.setEnabled(false);\r\n                else\r\n                    stepback.setEnabled(true);\r\n\r\n                setColorButton();\r\n            }\r\n\r\n            @Override\r\n            public void onPageScrollStateChanged(int state) {\r\n\r\n            }\r\n        });\r\n\r\n        notification.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View v) {\r\n                Intent intent = new Intent(SetAppointmentOption.this, Notifications.class);\r\n                startActivity(intent);\r\n            }\r\n        });\r\n\r\n        menu = findViewById(R.id.imageView3);\r\n\r\n        menu.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View v) {\r\n                final Dialog dialog = new Dialog(SetAppointmentOption.this);\r\n                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));\r\n                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);\r\n                dialog.setContentView(R.layout.menupage);\r\n                dialog.show();\r\n            }\r\n        });\r\n\r\n    }\r\n\r\n    private void setColorButton() {\r\n        if(stepback.isEnabled()){\r\n            stepback.setBackgroundResource(R.color.stepcolor);\r\n        }\r\n        else{\r\n            stepback.setBackgroundResource(android.R.color.darker_gray);\r\n        }\r\n\r\n        if(nextstep.isEnabled()){\r\n            nextstep.setBackgroundResource(R.color.stepcolor);\r\n        }\r\n        else{\r\n            nextstep.setBackgroundResource(android.R.color.darker_gray);\r\n        }\r\n    }\r\n\r\n    private void setupStepView() {\r\n        List<String> stepList = new ArrayList<>();\r\n        stepList.add(\"Clinic\");\r\n        stepList.add(\"Schedule\");\r\n        stepList.add(\"Service\");\r\n        stepList.add(\"Confirm\");\r\n        stepView.setSteps(stepList);\r\n    }\r\n\r\n    public void menuboard(View v) {\r\n        Intent intent = new Intent(this, SetAppointments.class);\r\n        startActivity(intent);\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/vettalkmobileapp/SetAppointmentOption.java b/app/src/main/java/com/example/vettalkmobileapp/SetAppointmentOption.java
+--- a/app/src/main/java/com/example/vettalkmobileapp/SetAppointmentOption.java	(revision 60a41989964dc748489341699becb1d50052482d)
++++ b/app/src/main/java/com/example/vettalkmobileapp/SetAppointmentOption.java	(date 1671272026672)
+@@ -1,7 +1,10 @@
+ package com.example.vettalkmobileapp;
+ 
+ import android.app.Dialog;
++import android.content.BroadcastReceiver;
++import android.content.Context;
+ import android.content.Intent;
++import android.content.IntentFilter;
+ import android.graphics.Color;
+ import android.graphics.drawable.ColorDrawable;
+ import android.os.Bundle;
+@@ -11,8 +14,10 @@
+ import android.widget.ImageView;
+ import android.widget.LinearLayout;
+ import android.widget.TextView;
++import android.widget.Toast;
+ 
+ import androidx.appcompat.app.AppCompatActivity;
++import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+ import androidx.viewpager.widget.ViewPager;
+ 
+ import com.example.vettalkmobileapp.Adapter.ViewPageAdapter;
+@@ -22,9 +27,12 @@
+ import java.util.List;
+ 
+ import butterknife.ButterKnife;
++import butterknife.OnClick;
+ 
+ public class SetAppointmentOption extends AppCompatActivity {
+ 
++    LocalBroadcastManager localBroadcastManager;
++
+     ImageView notification;
+     ImageView menu;
+     StepView stepView;
+@@ -32,6 +40,26 @@
+     TextView nextstep;
+     TextView stepback;
+ 
++    @OnClick(R.id.nextstep)
++    void nextClick(){
++        Toast.makeText(this, ""+Common.currentClinic.getClinicId(), Toast.LENGTH_SHORT).show();
++    }
++
++    private BroadcastReceiver buttonNextReceiver = new BroadcastReceiver() {
++        @Override
++        public void onReceive(Context context, Intent intent) {
++            Common.currentClinic = intent.getParcelableExtra(Common.KEY_CLINIC_STORE);
++            nextstep.setEnabled(true);
++            setColorButton();
++        }
++    };
++
++    @Override
++    protected void onDestroy(){
++        localBroadcastManager.unregisterReceiver(buttonNextReceiver);
++        super.onDestroy();
++    }
++
+     @Override
+     protected void onCreate(Bundle savedInstanceState) {
+         super.onCreate(savedInstanceState);
+@@ -44,6 +72,10 @@
+         viewPager = findViewById(R.id.viewpager);
+ 
+         ButterKnife.bind(SetAppointmentOption.this);
++
++        localBroadcastManager = LocalBroadcastManager.getInstance(this);
++        localBroadcastManager.registerReceiver(buttonNextReceiver, new IntentFilter(Common.KEY_ENABLE_BUTTON_NEXT));
++
+         setupStepView();
+         setColorButton();
+ 
+Index: .idea/.gitignore
+===================================================================
+diff --git a/.idea/.gitignore b/.idea/.gitignore
+deleted file mode 100644
+--- a/.idea/.gitignore	(revision 60a41989964dc748489341699becb1d50052482d)
++++ /dev/null	(revision 60a41989964dc748489341699becb1d50052482d)
+@@ -1,3 +0,0 @@
+-# Default ignored files
+-/shelf/
+-/workspace.xml
+Index: .idea/jarRepositories.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"RemoteRepositoriesConfiguration\">\r\n    <remote-repository>\r\n      <option name=\"id\" value=\"central\" />\r\n      <option name=\"name\" value=\"Maven Central repository\" />\r\n      <option name=\"url\" value=\"https://repo1.maven.org/maven2\" />\r\n    </remote-repository>\r\n    <remote-repository>\r\n      <option name=\"id\" value=\"jboss.community\" />\r\n      <option name=\"name\" value=\"JBoss Community repository\" />\r\n      <option name=\"url\" value=\"https://repository.jboss.org/nexus/content/repositories/public/\" />\r\n    </remote-repository>\r\n    <remote-repository>\r\n      <option name=\"id\" value=\"MavenRepo\" />\r\n      <option name=\"name\" value=\"MavenRepo\" />\r\n      <option name=\"url\" value=\"https://repo.maven.apache.org/maven2/\" />\r\n    </remote-repository>\r\n    <remote-repository>\r\n      <option name=\"id\" value=\"BintrayJCenter\" />\r\n      <option name=\"name\" value=\"BintrayJCenter\" />\r\n      <option name=\"url\" value=\"https://jcenter.bintray.com/\" />\r\n    </remote-repository>\r\n    <remote-repository>\r\n      <option name=\"id\" value=\"maven\" />\r\n      <option name=\"name\" value=\"maven\" />\r\n      <option name=\"url\" value=\"https://jitpack.io\" />\r\n    </remote-repository>\r\n    <remote-repository>\r\n      <option name=\"id\" value=\"Google\" />\r\n      <option name=\"name\" value=\"Google\" />\r\n      <option name=\"url\" value=\"https://dl.google.com/dl/android/maven2/\" />\r\n    </remote-repository>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/jarRepositories.xml b/.idea/jarRepositories.xml
+--- a/.idea/jarRepositories.xml	(revision 60a41989964dc748489341699becb1d50052482d)
++++ b/.idea/jarRepositories.xml	(date 1671099699412)
+@@ -17,11 +17,6 @@
+       <option name="url" value="https://repo.maven.apache.org/maven2/" />
+     </remote-repository>
+     <remote-repository>
+-      <option name="id" value="BintrayJCenter" />
+-      <option name="name" value="BintrayJCenter" />
+-      <option name="url" value="https://jcenter.bintray.com/" />
+-    </remote-repository>
+-    <remote-repository>
+       <option name="id" value="maven" />
+       <option name="name" value="maven" />
+       <option name="url" value="https://jitpack.io" />
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"DesignSurface\">\r\n    <option name=\"filePathToZoomLevelMap\">\r\n      <map>\r\n        <entry key=\"..\\:/Users/april/AndroidStudioProjects/VetTalkMobileApp/app/src/main/res/drawable/appointmentbtn.xml\" value=\"0.313\" />\r\n        <entry key=\"..\\:/Users/april/AndroidStudioProjects/VetTalkMobileApp/app/src/main/res/drawable/buttons.xml\" value=\"0.1205\" />\r\n        <entry key=\"..\\:/Users/april/AndroidStudioProjects/VetTalkMobileApp/app/src/main/res/drawable/dashboard.xml\" value=\"0.1115\" />\r\n        <entry key=\"..\\:/Users/april/AndroidStudioProjects/VetTalkMobileApp/app/src/main/res/drawable/dropdownbtn.xml\" value=\"0.313\" />\r\n        <entry key=\"..\\:/Users/april/AndroidStudioProjects/VetTalkMobileApp/app/src/main/res/drawable/ic_baseline_insert_drive_file_24.xml\" value=\"0.1\" />\r\n        <entry key=\"..\\:/Users/april/AndroidStudioProjects/VetTalkMobileApp/app/src/main/res/drawable/menu.xml\" value=\"0.3675\" />\r\n        <entry key=\"..\\:/Users/april/AndroidStudioProjects/VetTalkMobileApp/app/src/main/res/layout/activity_main.xml\" value=\"0.23717948717948717\" />\r\n        <entry key=\"..\\:/Users/april/AndroidStudioProjects/VetTalkMobileApp/app/src/main/res/layout/editpage.xml\" value=\"0.365625\" />\r\n        <entry key=\"..\\:/Users/april/AndroidStudioProjects/VetTalkMobileApp/app/src/main/res/layout/layout.xml\" value=\"0.35260416666666666\" />\r\n        <entry key=\"..\\:/Users/april/AndroidStudioProjects/VetTalkMobileApp/app/src/main/res/layout/medicalrecords.xml\" value=\"0.33\" />\r\n        <entry key=\"..\\:/Users/april/AndroidStudioProjects/VetTalkMobileApp/app/src/main/res/layout/menupage.xml\" value=\"0.25\" />\r\n        <entry key=\"..\\:/Users/april/AndroidStudioProjects/VetTalkMobileApp/app/src/main/res/layout/messages.xml\" value=\"0.3009833262077811\" />\r\n        <entry key=\"..\\:/Users/april/AndroidStudioProjects/VetTalkMobileApp/app/src/main/res/layout/notifications.xml\" value=\"0.365625\" />\r\n        <entry key=\"..\\:/Users/april/AndroidStudioProjects/VetTalkMobileApp/app/src/main/res/layout/petprofile.xml\" value=\"0.25\" />\r\n        <entry key=\"..\\:/Users/april/AndroidStudioProjects/VetTalkMobileApp/app/src/main/res/layout/setappointmentoption.xml\" value=\"0.33\" />\r\n        <entry key=\"..\\:/Users/april/AndroidStudioProjects/VetTalkMobileApp/app/src/main/res/layout/setappointments.xml\" value=\"0.33\" />\r\n        <entry key=\"..\\:/Users/april/AndroidStudioProjects/VetTalkMobileApp/app/src/main/res/layout/success.xml\" value=\"0.31068840579710144\" />\r\n        <entry key=\"..\\:/Users/april/AndroidStudioProjects/VetTalkMobileApp/app/src/main/res/layout/transactionhistory.xml\" value=\"0.33\" />\r\n        <entry key=\"..\\:/Users/april/AndroidStudioProjects/VetTalkMobileApp/app/src/main/res/xml/network_security_config.xml\" value=\"0.17300724637681159\" />\r\n        <entry key=\"..\\:/Users/april/AppData/Local/Android/Sdk/platforms/android-32/data/res/layout/simple_spinner_dropdown_item.xml\" value=\"0.1734375\" />\r\n        <entry key=\"..\\:/Users/april/AppData/Local/Android/Sdk/platforms/android-32/data/res/layout/simple_spinner_item.xml\" value=\"0.1734375\" />\r\n        <entry key=\"..\\:/Users/isaac/AndroidStudioProjects/VetTalk_MobileApp-main/VetTalk_MobileApp-main/app/src/main/res/layout/activity_main.xml\" value=\"0.15625\" />\r\n        <entry key=\"..\\:/Users/isaac/AndroidStudioProjects/VetTalk_MobileApp-main/VetTalk_MobileApp-main/app/src/main/res/layout/allergies.xml\" value=\"0.20416666666666666\" />\r\n        <entry key=\"..\\:/Users/isaac/AndroidStudioProjects/VetTalk_MobileApp-main/VetTalk_MobileApp-main/app/src/main/res/layout/consultation.xml\" value=\"0.20416666666666666\" />\r\n        <entry key=\"..\\:/Users/isaac/AndroidStudioProjects/VetTalk_MobileApp-main/VetTalk_MobileApp-main/app/src/main/res/layout/laboratory.xml\" value=\"0.20416666666666666\" />\r\n        <entry key=\"..\\:/Users/isaac/AndroidStudioProjects/VetTalk_MobileApp-main/VetTalk_MobileApp-main/app/src/main/res/layout/receipt.xml\" value=\"0.20416666666666666\" />\r\n        <entry key=\"..\\:/Users/isaac/AndroidStudioProjects/VetTalk_MobileApp-main/VetTalk_MobileApp-main/app/src/main/res/layout/transactionhistory.xml\" value=\"0.20416666666666666\" />\r\n        <entry key=\"..\\:/Users/isaac/AndroidStudioProjects/VetTalk_MobileApp-main/VetTalk_MobileApp-main/app/src/main/res/layout/vaccinations.xml\" value=\"0.20416666666666666\" />\r\n        <entry key=\"..\\:/Users/isaac/AndroidStudioProjects/VetTalk_MobileApp-main/VetTalk_MobileApp-main/app/src/main/res/xml/provider_paths.xml\" value=\"0.20416666666666666\" />\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_11\" default=\"true\" project-jdk-name=\"Android Studio default JDK\" project-jdk-type=\"JavaSDK\">\r\n    <output url=\"file://$PROJECT_DIR$/build/classes\" />\r\n  </component>\r\n  <component name=\"ProjectType\">\r\n    <option name=\"id\" value=\"Android\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+--- a/.idea/misc.xml	(revision 60a41989964dc748489341699becb1d50052482d)
++++ b/.idea/misc.xml	(date 1671099686600)
+@@ -1,40 +1,6 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+-  <component name="DesignSurface">
+-    <option name="filePathToZoomLevelMap">
+-      <map>
+-        <entry key="..\:/Users/april/AndroidStudioProjects/VetTalkMobileApp/app/src/main/res/drawable/appointmentbtn.xml" value="0.313" />
+-        <entry key="..\:/Users/april/AndroidStudioProjects/VetTalkMobileApp/app/src/main/res/drawable/buttons.xml" value="0.1205" />
+-        <entry key="..\:/Users/april/AndroidStudioProjects/VetTalkMobileApp/app/src/main/res/drawable/dashboard.xml" value="0.1115" />
+-        <entry key="..\:/Users/april/AndroidStudioProjects/VetTalkMobileApp/app/src/main/res/drawable/dropdownbtn.xml" value="0.313" />
+-        <entry key="..\:/Users/april/AndroidStudioProjects/VetTalkMobileApp/app/src/main/res/drawable/ic_baseline_insert_drive_file_24.xml" value="0.1" />
+-        <entry key="..\:/Users/april/AndroidStudioProjects/VetTalkMobileApp/app/src/main/res/drawable/menu.xml" value="0.3675" />
+-        <entry key="..\:/Users/april/AndroidStudioProjects/VetTalkMobileApp/app/src/main/res/layout/activity_main.xml" value="0.23717948717948717" />
+-        <entry key="..\:/Users/april/AndroidStudioProjects/VetTalkMobileApp/app/src/main/res/layout/editpage.xml" value="0.365625" />
+-        <entry key="..\:/Users/april/AndroidStudioProjects/VetTalkMobileApp/app/src/main/res/layout/layout.xml" value="0.35260416666666666" />
+-        <entry key="..\:/Users/april/AndroidStudioProjects/VetTalkMobileApp/app/src/main/res/layout/medicalrecords.xml" value="0.33" />
+-        <entry key="..\:/Users/april/AndroidStudioProjects/VetTalkMobileApp/app/src/main/res/layout/menupage.xml" value="0.25" />
+-        <entry key="..\:/Users/april/AndroidStudioProjects/VetTalkMobileApp/app/src/main/res/layout/messages.xml" value="0.3009833262077811" />
+-        <entry key="..\:/Users/april/AndroidStudioProjects/VetTalkMobileApp/app/src/main/res/layout/notifications.xml" value="0.365625" />
+-        <entry key="..\:/Users/april/AndroidStudioProjects/VetTalkMobileApp/app/src/main/res/layout/petprofile.xml" value="0.25" />
+-        <entry key="..\:/Users/april/AndroidStudioProjects/VetTalkMobileApp/app/src/main/res/layout/setappointmentoption.xml" value="0.33" />
+-        <entry key="..\:/Users/april/AndroidStudioProjects/VetTalkMobileApp/app/src/main/res/layout/setappointments.xml" value="0.33" />
+-        <entry key="..\:/Users/april/AndroidStudioProjects/VetTalkMobileApp/app/src/main/res/layout/success.xml" value="0.31068840579710144" />
+-        <entry key="..\:/Users/april/AndroidStudioProjects/VetTalkMobileApp/app/src/main/res/layout/transactionhistory.xml" value="0.33" />
+-        <entry key="..\:/Users/april/AndroidStudioProjects/VetTalkMobileApp/app/src/main/res/xml/network_security_config.xml" value="0.17300724637681159" />
+-        <entry key="..\:/Users/april/AppData/Local/Android/Sdk/platforms/android-32/data/res/layout/simple_spinner_dropdown_item.xml" value="0.1734375" />
+-        <entry key="..\:/Users/april/AppData/Local/Android/Sdk/platforms/android-32/data/res/layout/simple_spinner_item.xml" value="0.1734375" />
+-        <entry key="..\:/Users/isaac/AndroidStudioProjects/VetTalk_MobileApp-main/VetTalk_MobileApp-main/app/src/main/res/layout/activity_main.xml" value="0.15625" />
+-        <entry key="..\:/Users/isaac/AndroidStudioProjects/VetTalk_MobileApp-main/VetTalk_MobileApp-main/app/src/main/res/layout/allergies.xml" value="0.20416666666666666" />
+-        <entry key="..\:/Users/isaac/AndroidStudioProjects/VetTalk_MobileApp-main/VetTalk_MobileApp-main/app/src/main/res/layout/consultation.xml" value="0.20416666666666666" />
+-        <entry key="..\:/Users/isaac/AndroidStudioProjects/VetTalk_MobileApp-main/VetTalk_MobileApp-main/app/src/main/res/layout/laboratory.xml" value="0.20416666666666666" />
+-        <entry key="..\:/Users/isaac/AndroidStudioProjects/VetTalk_MobileApp-main/VetTalk_MobileApp-main/app/src/main/res/layout/receipt.xml" value="0.20416666666666666" />
+-        <entry key="..\:/Users/isaac/AndroidStudioProjects/VetTalk_MobileApp-main/VetTalk_MobileApp-main/app/src/main/res/layout/transactionhistory.xml" value="0.20416666666666666" />
+-        <entry key="..\:/Users/isaac/AndroidStudioProjects/VetTalk_MobileApp-main/VetTalk_MobileApp-main/app/src/main/res/layout/vaccinations.xml" value="0.20416666666666666" />
+-        <entry key="..\:/Users/isaac/AndroidStudioProjects/VetTalk_MobileApp-main/VetTalk_MobileApp-main/app/src/main/res/xml/provider_paths.xml" value="0.20416666666666666" />
+-      </map>
+-    </option>
+-  </component>
++  <component name="ExternalStorageConfigurationManager" enabled="true" />
+   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+     <output url="file://$PROJECT_DIR$/build/classes" />
+   </component>
+Index: .idea/vcs.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"VcsDirectoryMappings\">\r\n    <mapping directory=\"$PROJECT_DIR$\" vcs=\"Git\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/vcs.xml b/.idea/vcs.xml
+--- a/.idea/vcs.xml	(revision 60a41989964dc748489341699becb1d50052482d)
++++ b/.idea/vcs.xml	(date 1671099686618)
+@@ -1,6 +1,6 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+   <component name="VcsDirectoryMappings">
+-    <mapping directory="$PROJECT_DIR$" vcs="Git" />
++    <mapping directory="" vcs="Git" />
+   </component>
+ </project>
+\ No newline at end of file
+Index: app/src/main/java/com/example/vettalkmobileapp/Model/Clinic.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.vettalkmobileapp.Model;\r\n\r\npublic class Clinic {\r\n    private String name, address;\r\n\r\n    public Clinic() {\r\n\r\n    }\r\n\r\n    public Clinic(String name, String address) {\r\n        this.name = name;\r\n        this.address =address;\r\n    }\r\n\r\n    public String getName() {\r\n        return name;\r\n    }\r\n\r\n    public void setName(String name) {\r\n        this.name = name;\r\n    }\r\n\r\n    public String getAddress() {\r\n        return address;\r\n    }\r\n\r\n    public void setAddress(String address) {\r\n        this.address = address;\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/vettalkmobileapp/Model/Clinic.java b/app/src/main/java/com/example/vettalkmobileapp/Model/Clinic.java
+--- a/app/src/main/java/com/example/vettalkmobileapp/Model/Clinic.java	(revision 60a41989964dc748489341699becb1d50052482d)
++++ b/app/src/main/java/com/example/vettalkmobileapp/Model/Clinic.java	(date 1671108028213)
+@@ -1,17 +1,15 @@
+ package com.example.vettalkmobileapp.Model;
+ 
+-public class Clinic {
+-    private String name, address;
++import android.os.Parcel;
++import android.os.Parcelable;
++
++public class Clinic implements Parcelable {
++    private String name, address, clinicId;
+ 
+     public Clinic() {
+ 
+     }
+ 
+-    public Clinic(String name, String address) {
+-        this.name = name;
+-        this.address =address;
+-    }
+-
+     public String getName() {
+         return name;
+     }
+@@ -27,4 +25,42 @@
+     public void setAddress(String address) {
+         this.address = address;
+     }
++
++    public String getClinicId() {
++        return clinicId;
++    }
++
++    public void setClinicId(String clinicId) {
++        this.clinicId = clinicId;
++    }
++
++    protected Clinic(Parcel in) {
++        name = in.readString();
++        address = in.readString();
++        clinicId = in.readString();
++    }
++
++    public static final Creator<Clinic> CREATOR = new Creator<Clinic>() {
++        @Override
++        public Clinic createFromParcel(Parcel in) {
++            return new Clinic(in);
++        }
++
++        @Override
++        public Clinic[] newArray(int size) {
++            return new Clinic[size];
++        }
++    };
++
++    @Override
++    public int describeContents() {
++        return 0;
++    }
++
++    @Override
++    public void writeToParcel(Parcel dest, int flags) {
++        dest.writeString(name);
++        dest.writeString(address);
++        dest.writeString(clinicId);
++    }
+ }
+Index: .idea/deploymentTargetDropDown.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"deploymentTargetDropDown\">\r\n    <targetSelectedWithDropDown>\r\n      <Target>\r\n        <type value=\"QUICK_BOOT_TARGET\" />\r\n        <deviceKey>\r\n          <Key>\r\n            <type value=\"VIRTUAL_DEVICE_PATH\" />\r\n            <value value=\"C:\\Users\\april\\.android\\avd\\Pixel_4_API_30.avd\" />\r\n          </Key>\r\n        </deviceKey>\r\n      </Target>\r\n    </targetSelectedWithDropDown>\r\n    <timeTargetWasSelectedWithDropDown value=\"2022-12-06T06:22:17.487406400Z\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/deploymentTargetDropDown.xml b/.idea/deploymentTargetDropDown.xml
+--- a/.idea/deploymentTargetDropDown.xml	(revision 60a41989964dc748489341699becb1d50052482d)
++++ b/.idea/deploymentTargetDropDown.xml	(date 1671100515865)
+@@ -12,6 +12,6 @@
+         </deviceKey>
+       </Target>
+     </targetSelectedWithDropDown>
+-    <timeTargetWasSelectedWithDropDown value="2022-12-06T06:22:17.487406400Z" />
++    <timeTargetWasSelectedWithDropDown value="2022-12-15T10:35:11.435167700Z" />
+   </component>
+ </project>
+\ No newline at end of file
+Index: app/src/main/res/values/strings.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><resources>\r\n    <string name=\"app_name\">VetTalkMobileApp</string>\r\n    <string name=\"set_an_appointment\">Set an Appointment</string>\r\n    <string name=\"select_clinic\">Select Clinic</string>\r\n    <!-- TODO: Remove or change this placeholder text -->\r\n    <string name=\"hello_blank_fragment\">Hello blank fragment</string>\r\n    <string name=\"consult\">Consultation Record</string>\r\n    <string name=\"vaccine\">Immunization Dates</string>\r\n    <string name=\"allergies\">Allergies</string>\r\n    <string name=\"laboratory\">Laboratory Record</string>\r\n    <string name=\"petprofile\">Pet Profile</string>\r\n</resources>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/values/strings.xml b/app/src/main/res/values/strings.xml
+--- a/app/src/main/res/values/strings.xml	(revision 60a41989964dc748489341699becb1d50052482d)
++++ b/app/src/main/res/values/strings.xml	(date 1671100028910)
+@@ -9,4 +9,5 @@
+     <string name="allergies">Allergies</string>
+     <string name="laboratory">Laboratory Record</string>
+     <string name="petprofile">Pet Profile</string>
++    <string name="username">Username</string>
+ </resources>
+\ No newline at end of file

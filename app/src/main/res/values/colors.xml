@@ -12,4 +12,7 @@
     <color name="gray">#655D5D</color>
     <color name="lightgray">#8C8484</color>
     <color name="lightlightgray">#CE84939C</color>
+    <color name="grays">#888</color>
+    <color name="blue">#0000FF</color>
+    <color name="lightGray">#EEE</color>
 </resources>

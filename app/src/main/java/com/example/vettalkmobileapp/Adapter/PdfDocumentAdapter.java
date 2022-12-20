@@ -1,4 +1,4 @@
-package com.example.vettalkmobileapp;
+package com.example.vettalkmobileapp.Adapter;
 
 import android.content.Context;
 import android.os.Bundle;

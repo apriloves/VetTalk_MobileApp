@@ -2,6 +2,7 @@ package com.example.vettalkmobileapp.Adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,8 +10,10 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.vettalkmobileapp.Common;
 import com.example.vettalkmobileapp.Interface.IRecyclerItemSelectedListener;
 import com.example.vettalkmobileapp.Model.Clinic;
 import com.example.vettalkmobileapp.R;
@@ -25,11 +28,14 @@ public class ClinicAdapter extends RecyclerView.Adapter<ClinicAdapter.myViewHold
     Context context;
     List<Clinic> clinicList;
     List<CardView> cardViewList;
+    LocalBroadcastManager localBroadcastManager;
 
     public ClinicAdapter(Context context, List<Clinic> clinicList) {
         this.context = context;
         this.clinicList = clinicList;
+        //this.item = item;
         cardViewList = new ArrayList<>();
+        localBroadcastManager = LocalBroadcastManager.getInstance(context);
     }
 
     @NonNull
@@ -52,6 +58,12 @@ public class ClinicAdapter extends RecyclerView.Adapter<ClinicAdapter.myViewHold
             public void onItemSelectedListener(View view, int pos) {
                 for (CardView cardView:cardViewList)
                     cardView.setCardBackgroundColor(context.getResources().getColor(android.R.color.white));
+
+                myViewHolder.clinicbutton.setCardBackgroundColor(context.getResources().getColor(android.R.color.darker_gray));
+
+                Intent intent = new Intent(Common.KEY_ENABLE_BUTTON_NEXT);
+                intent.putExtra(Common.KEY_CLINIC_STORE, clinicList.get(pos));
+                localBroadcastManager.sendBroadcast(intent);
             }
         });
     }
@@ -84,7 +96,7 @@ public class ClinicAdapter extends RecyclerView.Adapter<ClinicAdapter.myViewHold
 
         @Override
         public void onClick(View v) {
-
+            iRecyclerItemSelectedListener.onItemSelectedListener(v, getAdapterPosition());
         }
     }
 

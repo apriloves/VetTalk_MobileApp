@@ -68,6 +68,11 @@ public class SetAppointments extends AppCompatActivity{
         startActivity(intent);
     }
 
+    public void viewappointments(View view) {
+        Intent intent = new Intent(SetAppointments.this, ViewAppointments.class);
+        startActivity(intent);
+    }
+
 }
 
 

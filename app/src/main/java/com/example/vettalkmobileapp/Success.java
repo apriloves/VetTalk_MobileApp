@@ -35,7 +35,7 @@ public class Success extends AppCompatActivity {
     TextView username;
     LinearLayout dashboard;
 
-    private String strJson, apiUrl = "http://192.168.1.9/mobileapp/userdata.php";
+    private String strJson, apiUrl = "http://192.168.1.11/mobileapp/userdata.php";
 
     private OkHttpClient client;
     private Response response;

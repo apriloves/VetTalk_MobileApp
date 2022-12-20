@@ -94,7 +94,8 @@
             android:background="@drawable/appointmentbtn"
             tools:ignore="MissingConstraints"
             android:layout_marginTop="300dp"
-            android:layout_marginLeft="-150dp">
+            android:layout_marginLeft="-150dp"
+            android:onClick="viewappointments">
 
             <TextView
                 android:layout_width="match_parent"
